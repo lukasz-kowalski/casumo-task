@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Circular Pro';
-  src: local('Circular Pro'), url('assets/fonts/lineto-circular-pro-book.ttf') format('truetype');
+  src: local('Circular Pro'), url('/public/assets/fonts/lineto-circular-pro-book.ttf') format('truetype');
 }
 
 * {
