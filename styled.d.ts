@@ -1,4 +1,4 @@
-import 'styled-components'
+import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
@@ -11,7 +11,7 @@ declare module 'styled-components' {
       40: string;
       48: string;
       56: string;
-    },
+    };
 
     fontSize: {
       xsmall: string;
@@ -19,13 +19,13 @@ declare module 'styled-components' {
       base: string;
       large: string;
       xlarge: string;
-    },
+    };
 
     borderRadius: {
       semiRounded: string;
       rounded: string;
       circle: string;
-    },
+    };
 
     colors: {
       purple60: string;
@@ -39,6 +39,7 @@ declare module 'styled-components' {
       grey90: string;
       green30: string;
       red30: string;
-    }
+      teal: string;
+    };
   }
 }

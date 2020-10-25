@@ -1,8 +1,8 @@
-import * as p from "./routePaths";
-import Home from 'pages/Home'
-import CardList from "pages/CardList";
+import * as p from './routePaths';
+import Home from 'pages/Home';
+import CardList from 'pages/CardList';
 import CardFormEdit from 'pages/CardForm/Edit';
-import { Route } from './interface'
+import { Route } from './interface';
 
 export const routes: Route[] = [
   {
@@ -18,7 +18,7 @@ export const routes: Route[] = [
 
 export const modalRoutes: Route[] = [
   {
-    path: p.cards.edit,
+    path: `${p.cards.edit}/:id`,
     component: CardFormEdit,
-  }
-]
+  },
+];

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Circular Pro';
-  src: local('Circular Pro'), url('/public/assets/fonts/lineto-circular-pro-book.ttf') format('truetype');
+  src: local('Circular Pro'), url('shared/fonts/lineto-circular-pro-book.ttf') format('truetype');
 }
 
 * {
@@ -8,4 +8,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  color: #1a212c;
+  font-weight: 400;
 }

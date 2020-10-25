@@ -1,7 +1,12 @@
 import React, { MouseEvent } from 'react';
 import { useHistory } from 'react-router-dom';
+import * as S from './Modal.styled';
+import X from 'shared/icons/X';
+import { FlexRow } from 'shared/styled/layout/FlexRow';
+import { ModalProps } from './interface';
+import { Box } from 'shared/styled/layout/Box';
 
-const Modal: React.FC = ({ children }) => {
+const Modal: React.FC<ModalProps> = ({ children, title }) => {
   const history = useHistory();
 
   const onBack = (e: MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
@@ -11,31 +16,19 @@ const Modal: React.FC = ({ children }) => {
 
   return (
     <>
-      <div
-        onClick={onBack}
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          bottom: 0,
-          right: 0,
-          background: 'rgba(0, 0, 0, 0.15)',
-        }}></div>
-      <div
-        style={{
-          position: 'absolute',
-          background: '#fff',
-          top: 25,
-          left: '10%',
-          right: '10%',
-          padding: 15,
-          border: '2px solid #444',
-        }}>
-        <>
-          <button onClick={onBack}>X</button>
+      <S.Overlay onClick={onBack} />
+      <S.Modal>
+        <Box width={350}>
+          <FlexRow justify="flex-end">
+            <S.CloseButton onClick={onBack}>
+              <X />
+            </S.CloseButton>
+          </FlexRow>
+          {title && <S.H2>{title}</S.H2>}
+
           {children}
-        </>
-      </div>
+        </Box>
+      </S.Modal>
     </>
   );
 };

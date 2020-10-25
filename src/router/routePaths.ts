@@ -1,8 +1,8 @@
-export const home = "/";
+export const home = '/';
 
-const cardsPrefix = '/cards'
+const cardsPrefix = '/cards';
 
 export const cards = {
   list: `${cardsPrefix}`,
-  edit: `${cardsPrefix}/edit`
-}
+  edit: `${cardsPrefix}/edit`,
+};

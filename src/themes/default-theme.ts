@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components'
+import { DefaultTheme } from 'styled-components';
 
 const defaultTheme: DefaultTheme = {
   spacing: {
@@ -9,7 +9,7 @@ const defaultTheme: DefaultTheme = {
     32: '32px',
     40: '40px',
     48: '48px',
-    56: '56px'
+    56: '56px',
   },
 
   fontSize: {
@@ -17,13 +17,13 @@ const defaultTheme: DefaultTheme = {
     small: '14px',
     base: '16px',
     large: '24px',
-    xlarge: '30px'
+    xlarge: '30px',
   },
 
   borderRadius: {
     semiRounded: '16px',
     rounded: '24px',
-    circle: '100px'
+    circle: '100px',
   },
 
   colors: {
@@ -37,8 +37,9 @@ const defaultTheme: DefaultTheme = {
     grey70: '#444E5D',
     grey90: '#1A212C',
     green30: '#19AC51',
-    red30: '#FC484C'
-  }
-}
+    red30: '#FC484C',
+    teal: '#41C9C7',
+  },
+};
 
-export { defaultTheme }
+export { defaultTheme };
