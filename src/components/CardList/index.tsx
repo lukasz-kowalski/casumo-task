@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { CardListProps } from './interface';
 import * as S from 'shared/styled';
 import Card from 'components/Card';
+import * as R from 'shared/styled/Button';
 
-const CardList: React.FC<CardListProps> = ({ path, cards }) => {
+const CardList: React.FC<CardListProps> = ({ cardPaths, cards }) => {
+  const location = useLocation();
+
   return (
     <>
       <S.Container>
@@ -13,10 +17,22 @@ const CardList: React.FC<CardListProps> = ({ path, cards }) => {
       <S.Container display="flex" justify="center">
         <S.Box width={350}>
           {cards.map((card) => (
-            <Card key={card.number} {...card} path={path} />
+            <Card key={card.number} {...card} path={cardPaths.edit} />
           ))}
         </S.Box>
       </S.Container>
+
+      <R.ButtonContainer>
+        <div>
+          <Link
+            to={{
+              pathname: `${cardPaths.add}`,
+              state: { background: location },
+            }}>
+            <R.Button>Add new card</R.Button>
+          </Link>
+        </div>
+      </R.ButtonContainer>
     </>
   );
 };

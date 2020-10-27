@@ -1,6 +1,9 @@
 import { CardData } from 'components/Card/interface';
 
 export interface CardListProps {
-  path: string;
+  cardPaths: {
+    add: string;
+    edit: string;
+  };
   cards: CardData[];
 }

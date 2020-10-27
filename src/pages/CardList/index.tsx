@@ -12,7 +12,7 @@ const CardListPage: React.FC = () => {
     setCards(cardsFromStorage);
   }, []);
 
-  return <CardList path={cardsPath.edit} cards={cards} />;
+  return <CardList cardPaths={cardsPath} cards={cards} />;
 };
 
 export default CardListPage;
