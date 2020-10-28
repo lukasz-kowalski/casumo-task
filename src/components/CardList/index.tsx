@@ -15,7 +15,7 @@ const CardList: React.FC<CardListProps> = ({ cardPaths, cards }) => {
         <S.SubHeader>Add, edit or delete your cards any time</S.SubHeader>
       </S.Container>
       <S.Container display="flex" justify="center">
-        <S.Box width={350}>
+        <S.Box width={300}>
           {cards.map((card) => (
             <Card key={card.number} {...card} path={cardPaths.edit} />
           ))}

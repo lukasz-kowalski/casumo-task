@@ -7,9 +7,7 @@ const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <ScrollToTop>
-        <div className="container">
-          <ModalSwitch />
-        </div>
+        <ModalSwitch />
       </ScrollToTop>
     </BrowserRouter>
   );

@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as S from './Modal.styled';
 import X from 'shared/icons/X';
@@ -14,11 +14,19 @@ const Modal: React.FC<ModalProps> = ({ children, title }) => {
     history.goBack();
   };
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   return (
     <>
       <S.Overlay onClick={onBack} />
       <S.Modal>
-        <Box width={350}>
+        <Box width={300} center>
           <FlexRow justify="flex-end">
             <S.CloseButton onClick={onBack}>
               <X />

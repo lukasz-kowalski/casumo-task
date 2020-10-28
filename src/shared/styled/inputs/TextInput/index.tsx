@@ -5,7 +5,7 @@ import { setInputState } from './utils';
 import X from 'shared/icons/X';
 import Valid from 'shared/icons/Valid';
 
-const TextInput: React.FC<Props> = ({ field, placeholder, label, error, wasTouched }) => {
+const TextInput: React.FC<Props> = ({ field, placeholder, label, error, wasTouched, mask }) => {
   const inputState = setInputState(error, wasTouched);
   const hasError = inputState === INPUT_STATE.ERROR;
   const isValid = inputState === INPUT_STATE.VALID;
@@ -14,7 +14,12 @@ const TextInput: React.FC<Props> = ({ field, placeholder, label, error, wasTouch
     <S.InputContainer>
       <S.Label>
         {label}
-        <S.TextInput {...field} placeholder={placeholder} state={inputState} />
+        {mask ? (
+          <S.MaskedTextInput {...field} placeholder={placeholder} state={inputState} mask={mask} guide={true} />
+        ) : (
+          <S.TextInput {...field} placeholder={placeholder} state={inputState} />
+        )}
+        {hasError && <S.ErrorMessage>{error}</S.ErrorMessage>}
       </S.Label>
 
       <S.IconContainer>

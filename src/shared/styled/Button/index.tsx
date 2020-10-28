@@ -5,7 +5,7 @@ export const ButtonContainer = styled.div((p) => ({
   bottom: '5%',
   left: '50%',
   transform: 'translateX(-50%)',
-  width: '350px',
+  width: '300px',
 }));
 
 export const Button = styled.button((p) => ({
@@ -21,4 +21,14 @@ export const Button = styled.button((p) => ({
   fontSize: p.theme.fontSize.base,
   width: '100%',
   fontWeight: 'bold',
+
+  '&:disabled': {
+    background: p.theme.colors.background,
+  },
+}));
+
+export const DeleteButton = styled(Button)((p) => ({
+  background: 'transparent',
+  color: p.theme.colors.grey20,
+  marginTop: p.theme.spacing[8],
 }));

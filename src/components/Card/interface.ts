@@ -4,6 +4,7 @@ export interface CardData {
   name: string;
   number: string;
   type: VARIANT;
+  id: string;
 }
 
 export enum VARIANT {

@@ -7,15 +7,35 @@ const localStorageService = {
     return cards;
   },
 
-  getCard: (cvc: string) => {
+  getCard: (id: string) => {
     const cards: CardData[] = localStorageService.getCards();
-    return cards.find((card) => card.cvc === cvc);
+    return cards.find((card) => card.id === id);
   },
 
-  setCard: (card: CardData) => {
+  addCard: (card: CardData) => {
     const cards: CardData[] = localStorageService.getCards();
 
     cards.push(card);
+
+    return localStorage.setItem('cards', JSON.stringify(cards));
+  },
+
+  editCard: (id: string, card: CardData) => {
+    const cards: CardData[] = localStorageService.getCards();
+
+    const index = cards.findIndex((card) => card.id === id);
+
+    cards[index] = card;
+
+    return localStorage.setItem('cards', JSON.stringify(cards));
+  },
+
+  deleteCard: (id: string) => {
+    const cards: CardData[] = localStorageService.getCards();
+
+    const index = cards.findIndex((card) => card.id === id);
+
+    cards.splice(index, 1);
 
     return localStorage.setItem('cards', JSON.stringify(cards));
   },

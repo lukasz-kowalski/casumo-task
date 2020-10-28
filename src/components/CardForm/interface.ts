@@ -21,4 +21,10 @@ export interface CardFormData {
 
 export interface CardFormProps {
   onSubmit: (values: CardFormData) => void;
+  isAddForm: boolean;
+  initialData: CardFormData;
+}
+
+export interface FormProps {
+  isAddForm: boolean;
 }

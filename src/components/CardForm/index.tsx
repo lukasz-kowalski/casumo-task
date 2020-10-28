@@ -1,17 +1,25 @@
 import React from 'react';
 import get from 'get-value';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Field } from 'formik';
 import { FIELDS, FIELDS_QUESTIONS, CardFormProps } from './interface';
 import validationSchema from './schema';
-import { initialCard } from './initialData';
 import TextInput from 'shared/styled/inputs/TextInput';
+import { Button } from 'shared/styled/Button';
+import { creditCardMask, expiryDateMask, cvcMask } from 'shared/inputMasks';
+import * as S from './CardForm.styled';
 
-const CardForm: React.FC<CardFormProps> = ({ onSubmit }) => {
+const CardForm: React.FC<CardFormProps> = ({ onSubmit, isAddForm, initialData }) => {
   return (
-    <Formik initialValues={initialCard} onSubmit={onSubmit} validationSchema={validationSchema}>
-      {({ errors, touched }) => {
+    <Formik
+      initialValues={initialData}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+      enableReinitialize={true}>
+      {({ errors, touched, isValid, dirty }) => {
+        const shouldDisableSubmit = isAddForm ? !isValid || !dirty : !isValid;
+
         return (
-          <Form>
+          <S.Form isAddForm={isAddForm}>
             <Field
               name={FIELDS.NAME}
               label={FIELDS_QUESTIONS.NAME}
@@ -28,6 +36,7 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit }) => {
               placeholder="0000 0000 0000 0000"
               error={get(errors, FIELDS.CARD_NUMBER)}
               wasTouched={get(touched, FIELDS.CARD_NUMBER)}
+              mask={creditCardMask}
             />
 
             <Field
@@ -37,6 +46,7 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit }) => {
               placeholder="00/00"
               error={get(errors, FIELDS.EXPIRY_DATE)}
               wasTouched={get(touched, FIELDS.EXPIRY_DATE)}
+              mask={expiryDateMask}
             />
 
             <Field
@@ -46,8 +56,13 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit }) => {
               placeholder="000"
               error={get(errors, FIELDS.CVC)}
               wasTouched={get(touched, FIELDS.CVC)}
+              mask={cvcMask}
             />
-          </Form>
+
+            <Button type="submit" disabled={shouldDisableSubmit}>
+              Confirm
+            </Button>
+          </S.Form>
         );
       }}
     </Formik>

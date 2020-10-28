@@ -6,5 +6,5 @@ export const Container = styled.div<ContainerProps>((p) => ({
   padding: `0 ${p.theme.spacing[16]}`,
   display: p.display || 'block',
   justifyContent: p.justify || 'unset',
-  maxWidth: '350px',
+  maxWidth: '336px',
 }));

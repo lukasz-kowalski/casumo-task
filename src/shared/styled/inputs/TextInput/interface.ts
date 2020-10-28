@@ -11,6 +11,7 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error: string;
   wasTouched: boolean;
+  mask?: (string | RegExp)[];
 }
 
 export type Props = FieldProps & TextInputProps;

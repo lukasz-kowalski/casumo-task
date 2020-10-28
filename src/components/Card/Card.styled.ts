@@ -19,7 +19,7 @@ export const Card = styled.div<VariantProps>((p) => ({
   backgroundPosition: 'bottom right',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'contain',
-  minHeight: '200px',
+  minHeight: '180px',
   borderRadius: p.theme.borderRadius.rounded,
   padding: p.theme.spacing[24],
   color: p.theme.colors.white,
@@ -31,6 +31,10 @@ export const Card = styled.div<VariantProps>((p) => ({
 
 export const Item = styled.div<ItemProps>((p) => ({
   marginLeft: p.small ? p.theme.spacing[16] : p.theme.spacing[24],
+}));
+
+export const NumberWrapper = styled.div<ItemProps>((p) => ({
+  wordSpacing: p.theme.spacing[16],
 }));
 
 export const SubDetails = styled.p<VariantProps>((p) => ({

@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Modal from 'shared/Modal';
-import { CardData } from 'components/Card/interface';
+import CardForm from 'components/CardForm';
 import { initialCard } from './initialData';
 import localStorageService from 'services/localStorage';
-import CardForm from 'components/CardForm';
 import { CardFormData } from 'components/CardForm/interface';
+import { strategyProvider } from '../strategyProvider';
+import { Strategy } from '../interface';
 
-const Edit: React.FC = () => {
-  // useEffect(() => {
-  //   const cardFromStorage = localStorageService.getCard(id);
-  //   console.log(cardFromStorage);
-  //   if (cardFromStorage) {
-  //     setCard(cardFromStorage);
-  //   }
-  // }, []);
+const Add: React.FC = () => {
+  const history = useHistory();
+  const strategy = strategyProvider(Strategy.ADD);
 
   const handleSubmit = (values: CardFormData) => {
-    console.log(values);
+    localStorageService.addCard(strategy.mapCardForSave(values));
+    history.goBack();
   };
 
   return (
-    <Modal title="Add your card details">
-      <CardForm onSubmit={handleSubmit} />
+    <Modal title={strategy.header}>
+      <CardForm onSubmit={handleSubmit} isAddForm={strategy.isAddForm} initialData={initialCard} />
     </Modal>
   );
 };
 
-export default Edit;
+export default Add;

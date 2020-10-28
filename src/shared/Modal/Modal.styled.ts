@@ -16,6 +16,8 @@ export const Modal = styled.div((p) => ({
   bottom: 0,
   padding: p.theme.spacing[24],
   borderRadius: `${p.theme.borderRadius.rounded} ${p.theme.borderRadius.rounded} 0 0`,
+  overflowY: 'auto',
+  maxHeight: '100vh',
 }));
 
 export const CloseButton = styled.button((p) => ({

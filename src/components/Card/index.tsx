@@ -6,24 +6,9 @@ import Edit from 'shared/icons/Edit';
 import { CardProps } from './interface';
 import { getCardIcon } from './utils';
 
-const Card: React.FC<CardProps> = ({ cvc, expiryDate, name, number, type, path }) => {
+const Card: React.FC<CardProps> = ({ id, cvc, expiryDate, name, number, type, path }) => {
   const location = useLocation();
   const IconComponent = getCardIcon(type);
-  const splittedCardNumber = number.match(/.{1,4}/g) || [];
-
-  const renderCardNumber = (numbers: string[]) => {
-    return numbers.map((number, index) => {
-      if (index === 0) {
-        return <p key={number}>{number}</p>;
-      }
-
-      return (
-        <S.Item key={number} small>
-          {number}
-        </S.Item>
-      );
-    });
-  };
 
   return (
     <S.Card variant={type}>
@@ -48,12 +33,14 @@ const Card: React.FC<CardProps> = ({ cvc, expiryDate, name, number, type, path }
       <div>
         <S.ImportantData>{name}</S.ImportantData>
         <FlexRow>
-          <FlexRow justify="flex-start">{renderCardNumber(splittedCardNumber)}</FlexRow>
+          <FlexRow justify="flex-start">
+            <S.NumberWrapper>{number}</S.NumberWrapper>
+          </FlexRow>
           {path && (
             <div>
               <Link
                 to={{
-                  pathname: `${path}/${cvc}`,
+                  pathname: `${path}/${id}`,
                   state: { background: location },
                 }}>
                 <Edit />
