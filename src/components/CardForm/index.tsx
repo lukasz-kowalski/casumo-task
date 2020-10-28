@@ -19,7 +19,7 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, isAddForm, initialData })
         const shouldDisableSubmit = isAddForm ? !isValid || !dirty : !isValid;
 
         return (
-          <S.Form isAddForm={isAddForm}>
+          <S.Form $isAddForm={isAddForm}>
             <Field
               name={FIELDS.NAME}
               label={FIELDS_QUESTIONS.NAME}

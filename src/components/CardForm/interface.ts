@@ -26,5 +26,5 @@ export interface CardFormProps {
 }
 
 export interface FormProps {
-  isAddForm: boolean;
+  $isAddForm: boolean;
 }
